@@ -14,10 +14,12 @@ class Tab extends React.Component {
     closeIcon: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
     position: PropTypes.oneOf(['left', 'right']),
     active: PropTypes.bool,
+    className: PropTypes.string,
   }
 
   render() {
     const active = this.props.active ? ' active' : '';
+    const className = this.props.className ? thisprops.className : '';
     var closeIcon;
     if (typeof(this.props.closeIcon) === 'string')
       closeIcon = <i className={this.props.closeIcon} />;
@@ -28,7 +30,7 @@ class Tab extends React.Component {
       closeIcon = <i className={closecls} />
     }
     return (
-      <div id={this.props.id} className={"sidebar-pane" + active}>
+      <div id={this.props.id} className={"sidebar-pane" + active + className}>
         <h1 className="sidebar-header">
           {this.props.header}
           <div className="sidebar-close" onClick={this.props.onClose}>
